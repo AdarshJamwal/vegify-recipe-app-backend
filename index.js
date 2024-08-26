@@ -19,10 +19,6 @@ async function main() {
 
 }
 
-app.get('/', (req, res) => {
-    res.send('Veggify recify app server is running!')
-  })
-
 main().then(()=> console.log("Mongodb Connected Successfully")).catch(err => console.log(err));
 
 
@@ -39,7 +35,9 @@ app.use('/api', CategoryRoutes)
 app.use('/api/user', userRoutes);  
 app.use('/api/auth', authRoutes)
 
-
+app.get('/', (req, res) => {
+  res.send('Veggify recify app server is running!')
+})
 
 
 app.listen(port , () => {
