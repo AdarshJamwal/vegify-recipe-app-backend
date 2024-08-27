@@ -2,16 +2,28 @@ const express = require('express')
 const mongoose = require('mongoose');
 require('dotenv').config();
 const app = express();
-const cors = require('cors')
+
+const cors = require('cors');
+app.use(cors());
+app.use(cors({
+  origin: 'https://vegify-frontend-app.vercel.app', // Specify the allowed origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods if needed
+  allowedHeaders: ['Content-Type'], // Specify allowed headers if needed
+}));
+
+
 const cookieParser = require('cookie-parser');
 
 
 const port = process.env.PORT || 5000;
 
+
+
+
 // getting-started.js
 
 app.use(express.json());
-app.use(cors());
+
 app.use(cookieParser())
 
 async function main() {
